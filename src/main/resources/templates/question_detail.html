@@ -37,6 +37,10 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
 <!-- 답변의 갯수 표시 -->
 <h5 class="border-bottom my-3 py-2"
     th:text="|${#lists.size(question.answerList)}개의 답변이 있습니다.|"></h5>
@@ -64,7 +68,11 @@
                 추천
                 <span class="badge rounded-pill bg-success" th:text="${#lists.size(answer.voter)}"></span>
             </a>
+<<<<<<< HEAD
             <a th:href="@{|/answer/modify/${answer.id}|}" class="btn btn-sm btn-outline-secondary"
+=======
+            <a th:href="@{|/question/modify/${question.id}|}" class="btn btn-sm btn-outline-secondary"
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
                sec:authorize="isAuthenticated()"
                th:if="${question.author != null and #authentication.getPrincipal().getUsername() == question.author.username}"
                th:text="수정"></a>
@@ -75,13 +83,22 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
 <!-- 답변 반복 끝  -->
 <!-- 답변 작성 -->
 <form th:action="@{|/answer/create/${question.id}|}" th:object="${answerForm}" method="post" class="my-3">
     <div th:replace="~{form_errors :: formErrorsFragment}"></div>
     <textarea sec:authorize="isAnonymous()" disabled th:field="*{content}" class="form-control" rows="10"></textarea>
+<<<<<<< HEAD
     <textarea sec:authorize="isAuthenticated()" th:field="*{content}" class="form-control" rows="10"></textarea>
     <input type="submit" value="답변등록" class="btn btn-primary my-2">
+=======
+    <textarea sec:authorize="isAuthenticated()" th:field="*{content}" class="form-control" rows="10"></textarea> <input
+        type="submit" value="답변등록" class="btn btn-primary my-2">
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
 </form>
 </div>
 <script layout:fragment="script" type='text/javascript'>

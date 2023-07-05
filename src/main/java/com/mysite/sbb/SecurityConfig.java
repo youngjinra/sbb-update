@@ -13,10 +13,16 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+<<<<<<< HEAD
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
+=======
+@EnableMethodSecurity(prePostEnabled = true)
+@Configuration
+@EnableWebSecurity
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
 public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -33,7 +39,10 @@ public class SecurityConfig {
                 .formLogin()
                 .loginPage("/user/login")
                 .defaultSuccessUrl("/")
+<<<<<<< HEAD
 
+=======
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))

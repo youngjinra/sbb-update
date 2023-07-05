@@ -1,8 +1,12 @@
 package com.mysite.sbb.question;
 
+<<<<<<< HEAD
 import com.mysite.sbb.answer.Answer;
 import com.mysite.sbb.answer.AnswerForm;
 import com.mysite.sbb.answer.AnswerService;
+=======
+import com.mysite.sbb.answer.AnswerForm;
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
 import com.mysite.sbb.user.SiteUser;
 import com.mysite.sbb.user.UserService;
 import jakarta.validation.Valid;
@@ -17,19 +21,27 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
+<<<<<<< HEAD
 import java.util.List;
+=======
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
 
 @RequestMapping("/question")
 @RequiredArgsConstructor
 @Controller
+<<<<<<< HEAD
 public class
 QuestionController {
     private final AnswerService answerService;
+=======
+public class QuestionController {
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
 
     private final QuestionService questionService;
     private final UserService userService;
 
     @GetMapping("/list")
+<<<<<<< HEAD
     public String list(Model model, @RequestParam(value="page", defaultValue="0") int page,
                        @RequestParam(value = "kw", defaultValue = "") String kw) {
 
@@ -38,6 +50,9 @@ QuestionController {
         // questionRopository야 전체 다 가져와서 questionList라는 이름의 꾸러미에다가 넣어줘
          // answerRepository야 전체 다 가져와서 answerList라는 이름의 꾸러미에다가 넣어줘
 
+=======
+    public String list(Model model, @RequestParam(value="page", defaultValue="0") int page, @RequestParam(value = "kw", defaultValue = "") String kw) {
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
         Page<Question> paging = this.questionService.getList(page, kw);
         model.addAttribute("paging", paging);
         model.addAttribute("kw", kw);
@@ -56,8 +71,12 @@ QuestionController {
     }
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
+<<<<<<< HEAD
     public String questionCreate(@Valid QuestionForm questionForm,
                                  BindingResult bindingResult, Principal principal) {
+=======
+    public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult, Principal principal) {
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
         if (bindingResult.hasErrors()) {
             return "question_form";
         }
@@ -67,10 +86,16 @@ QuestionController {
     }
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/modify/{id}")
+<<<<<<< HEAD
     public String questionModify(QuestionForm questionForm, @PathVariable("id") Integer id, Principal principal)
     {
         Question question = this.questionService.getQuestion(id);
         if (!question.getAuthor().getUsername().equals(principal.getName())) {
+=======
+    public String questionModify(QuestionForm questionForm, @PathVariable("id") Integer id, Principal principal) {
+        Question question = this.questionService.getQuestion(id);
+        if(!question.getAuthor().getUsername().equals(principal.getName())) {
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
         questionForm.setSubject(question.getSubject());
@@ -109,5 +134,9 @@ QuestionController {
         this.questionService.vote(question, siteUser);
         return String.format("redirect:/question/detail/%s", id);
     }
+<<<<<<< HEAD
 }
 ///asdfsdf
+=======
+}
+>>>>>>> 709b3cdbba9424ac5c032d634c5b6900a343d0bc
